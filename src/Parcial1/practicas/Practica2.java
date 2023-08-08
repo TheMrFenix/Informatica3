@@ -1,4 +1,4 @@
-package Tarea2;
+package Parcial1.practicas;
 import java.util.Scanner;
 public class Practica2 {
     public static void main(String[] args) {
