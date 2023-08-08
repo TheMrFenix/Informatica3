@@ -9,19 +9,27 @@ public class Practica3 {
             System.out.println("1- Practica 4.1");
             System.out.println("2- Practica 4.2");
             System.out.println("3- Practica 4.3");
-            System.out.println("4- Practica 4.4");
-            System.out.println("5- Practica 4.5");
-            System.out.println("6- Practica 4.6");
-            System.out.println("7- Practica 4.7");
-            System.out.println("8- Practica 4.8");
-            System.out.println("9- Practica 4.9");
-            System.out.println("10- Practica 4.10");
-            System.out.println("11- Practica 4.11");
-            System.out.println("12- Practica 4.12");
-            System.out.println("13- Practica 4.13");
-            System.out.println("14- Practica 4.14");
-            System.out.println("15- Practica 4.15");
-            System.out.println("16- Practica 4.16");
+            System.out.println("4- Practica 4.4.1");
+            System.out.println("5- Practica 4.4.2");
+            System.out.println("6- Practica 4.4.3");
+            System.out.println("7- Practica 4.5");
+            System.out.println("8- Practica 4.6");
+            System.out.println("9- Practica 4.7");
+            System.out.println("10- Practica 4.8.1");
+            System.out.println("11- Practica 4.8.2");
+            System.out.println("12- Practica 4.9.1");
+            System.out.println("13- Practica 4.9.2");
+            System.out.println("14- Practica 4.9.3");
+            System.out.println("15- Practica 4.10.1");
+            System.out.println("16- Practica 4.10.2");
+            System.out.println("17- Practica 4.10.3");
+            System.out.println("18- Practica 4.11");
+            System.out.println("19- Practica 4.12.1");
+            System.out.println("20- Practica 4.12.2");
+            System.out.println("21- Practica 4.13");
+            System.out.println("22- Practica 4.14");
+            System.out.println("23- Practica 4.15");
+            System.out.println("24- Practica 4.16");
             System.out.println("0- Salir");
             System.out.print("Elija una opcion: ");
             x=sc.nextInt();
@@ -36,42 +44,66 @@ public class Practica3 {
                     Ejercicio3();
                     break;
                 case 4:
-                    Ejercicio4();
+                    Ejercicio4_1();
                     break;
                 case 5:
-                    Ejercicio5();
+                    Ejercicio4_2();
                     break;
                 case 6:
-                    Ejercicio6();
+                    Ejercicio4_3();
                     break;
                 case 7:
-                    Ejercicio7();
+                    Ejercicio5();
                     break;
                 case 8:
-                    Ejercicio8();
+                    Ejercicio6();
                     break;
                 case 9:
-                    Ejercicio9();
+                    Ejercicio7();
                     break;
                 case 10:
-                    Ejercicio10();
+                    Ejercicio8_1();
                     break;
                 case 11:
-                    Ejercicio11();
+                    Ejercicio8_2();
                     break;
                 case 12:
-                    Ejercicio12();
+                    Ejercicio9_1();
                     break;
                 case 13:
-                    Ejercicio13();
+                    Ejercicio9_2();
                     break;
                 case 14:
-                    Ejercicio14();
+                    Ejercicio9_3();
                     break;
                 case 15:
-                    Ejercicio15();
+                    Ejercicio10_1();
                     break;
                 case 16:
+                    Ejercicio10_2();
+                    break;
+                case 17:
+                    Ejercicio10_3();
+                    break;
+                case 18:
+                    Ejercicio11();
+                    break;
+                case 19:
+                    Ejercicio12_1();
+                    break;
+                case 20:
+                    Ejercicio12_2();
+                    break;
+                case 21:
+                    Ejercicio13();
+                    break;
+                case 22:
+                    Ejercicio14();
+                    break;
+                case 23:
+                    Ejercicio15();
+                    break;
+                case 24:
                     Ejercicio16();
                     break;
                 default:
@@ -116,11 +148,10 @@ public class Practica3 {
         }
         System.out.println("La suma acumulada es "+su);
     }
-    public static void Ejercicio4(){
+    public static void Ejercicio4_1(){
         Scanner sc=new Scanner(System.in);
-        int c=1,ed,su=0,nu;
-        double pr;
-        System.out.println("Practica 4.4");
+        int c=1,ed,su=0,nu,pr;
+        System.out.println("Practica 4.4.1");
         System.out.print("Ingrese el numero de alumnos: ");
         nu=sc.nextInt();
         while (c<=nu){
@@ -128,6 +159,35 @@ public class Practica3 {
             ed=sc.nextInt();
             su=su+ed;
             c++;
+        }
+        pr=su/nu;
+        System.out.println("La edad promedio del grupo es "+pr);
+    }
+    public static void Ejercicio4_2(){
+        Scanner sc=new Scanner(System.in);
+        int c=1,ed,su=0,nu,pr;
+        System.out.println("Practica 4.4.2");
+        System.out.print("Ingrese el numero de alumnos: ");
+        nu=sc.nextInt();
+        do {
+            System.out.print("Ingrese la edad del alumno ("+c+"): ");
+            ed=sc.nextInt();
+            su=su+ed;
+            c++;
+        } while (c<=nu);
+        pr=su/nu;
+        System.out.println("La edad promedio del grupo es "+pr);
+    }
+    public static void Ejercicio4_3(){
+        Scanner sc=new Scanner(System.in);
+        int ed,su=0,nu,pr;
+        System.out.println("Practica 4.4.3");
+        System.out.print("Ingrese el numero de alumnos: ");
+        nu=sc.nextInt();
+        for (int c=1;c<nu;c++){
+            System.out.print("Ingrese la edad del alumno ("+c+"): ");
+            ed=sc.nextInt();
+            su=su+ed;
         }
         pr=su/nu;
         System.out.println("La edad promedio del grupo es "+pr);
@@ -186,7 +246,7 @@ public class Practica3 {
         System.out.println("La cantidad de numeros positivos es "+cp);
         System.out.println("La cantidad de numeros negativos es "+cn);
     }
-    public static void Ejercicio8(){
+    public static void Ejercicio8_1(){
         int n=0;
         System.out.println("Ejercicio 4.8");
         while (n<=100){
@@ -194,7 +254,15 @@ public class Practica3 {
             n=n+2;
         }
     }
-    public static void Ejercicio9(){
+    public static void Ejercicio8_2(){
+        int n=0;
+        System.out.println("Ejercicio 4.8");
+        do {
+            System.out.println(n);
+            n=n+2;
+        } while (n<=100);
+    }
+    public static void Ejercicio9_1(){
         Scanner sc=new Scanner(System.in);
         int a=0,b=1,c,m=1,n;
         System.out.println("Ejercicio 4.9");
@@ -209,7 +277,36 @@ public class Practica3 {
             m++;
         }
     }
-    public static void Ejercicio10(){
+    public static void Ejercicio9_2(){
+        Scanner sc=new Scanner(System.in);
+        int a=0,b=1,c,m=1,n;
+        System.out.println("Ejercicio 4.9");
+        System.out.print("Ingrese la cantidad de termino: ");
+        n=sc.nextInt();
+        System.out.println("los dos primeros terminos son "+a+" "+b);
+        do {
+            c=a+b;
+            System.out.println(c);
+            a=b;
+            b=c;
+            m++;
+        } while (m<=(n-2));
+    }
+    public static void Ejercicio9_3(){
+        Scanner sc=new Scanner(System.in);
+        int a=0,b=1,c,n;
+        System.out.println("Ejercicio 4.9");
+        System.out.print("Ingrese la cantidad de termino: ");
+        n=sc.nextInt();
+        System.out.println("los dos primeros terminos son "+a+" "+b);
+        for (int m=1;m<(n-2);m++){
+            c=a+b;
+            System.out.println(c);
+            a=b;
+            b=c;
+        }
+    }
+    public static void Ejercicio10_1(){
         Scanner sc=new Scanner(System.in);
         int d=1,sh=0,ht;
         double ph,su;
@@ -221,6 +318,38 @@ public class Practica3 {
             ht=sc.nextInt();
             sh=sh+ht;
             d++;
+        }
+        su=sh*ph;
+        System.out.println("El sueldo semanal es de "+su+" bs, por "+sh+" horas semanales trabajadas");
+    }
+    public static void Ejercicio10_2(){
+        Scanner sc=new Scanner(System.in);
+        int d=1,sh=0,ht;
+        double ph,su;
+        System.out.println("Ejericico 4.10");
+        System.out.print("Ingrese el pago por hora: ");
+        ph=sc.nextDouble();
+        do {
+            System.out.print("Ingrese las horas trabajadas: ");
+            ht=sc.nextInt();
+            sh=sh+ht;
+            d++;
+        } while (d<=6);
+        su=sh*ph;
+        System.out.println("El sueldo semanal es de "+su+" bs, por "+sh+" horas semanales trabajadas");
+    }
+    public static void Ejercicio10_3(){
+        Scanner sc=new Scanner(System.in);
+        int sh=0,ht;
+        double ph,su;
+        System.out.println("Ejericico 4.10");
+        System.out.print("Ingrese el pago por hora: ");
+        ph=sc.nextDouble();
+        for (int d=1;d<6;d++){
+            System.out.print("Ingrese las horas trabajadas: ");
+            ht=sc.nextInt();
+            sh=sh+ht;
+
         }
         su=sh*ph;
         System.out.println("El sueldo semanal es de "+su+" bs, por "+sh+" horas semanales trabajadas");
@@ -241,7 +370,7 @@ public class Practica3 {
         }
         System.out.println("El punto de encuentro esta a "+ka+" km");
     }
-    public static void Ejercicio12(){
+    public static void Ejercicio12_1(){
         Scanner sc=new Scanner(System.in);
         double n,cn=1,v,t1=0,t2=0,t3=0,tt=0;
         int a=0,b=0,c=0;
@@ -265,6 +394,38 @@ public class Practica3 {
             }
             tt=tt+v;
             cn++;
+        }
+        System.out.println("La cantidad de ventas mayores a mil son "+a);
+        System.out.println("La cantidad de ventas mayores a quinientos y menoresa a mil son "+b);
+        System.out.println("La cantidad de ventas menores a quinientos son "+c);
+        System.out.println("El total de ventas tipo A es "+t1);
+        System.out.println("El total de ventas tipo B es "+t2);
+        System.out.println("El total de ventas tipo C es "+t3);
+        System.out.println("El total de ventas es "+tt);
+    }
+    public static void Ejercicio12_2(){
+        Scanner sc=new Scanner(System.in);
+        double n,v,t1=0,t2=0,t3=0,tt=0;
+        int a=0,b=0,c=0;
+        System.out.println("Ejercicio 4.12");
+        System.out.print("Ingrese el numero de ventas: ");
+        n=sc.nextDouble();
+        for (int cn=1;cn<=n;cn++){
+            System.out.print("Ingrese el monto de la venta: ");
+            v=sc.nextDouble();
+            if (v>1000){
+                a++;
+                t1=t1+v;
+            } else {
+                if (v>500){
+                    b++;
+                    t2=t2+v;
+                } else {
+                    c++;
+                    t3=t3+v;
+                }
+            }
+            tt=tt+v;
         }
         System.out.println("La cantidad de ventas mayores a mil son "+a);
         System.out.println("La cantidad de ventas mayores a quinientos y menoresa a mil son "+b);
