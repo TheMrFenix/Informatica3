@@ -15,6 +15,8 @@ public class Practica4 {
             System.out.println("7- Ejercicio 5.7");
             System.out.println("8- Ejercicio 5.8");
             System.out.println("9- Ejercicio 5.9");
+            System.out.println("10- Ejercicio 5.10");
+            System.out.println("11- Ejercicio 5.11");
             System.out.println("0- Salir");
             System.out.print("-> Elije una opcion: ");
             x=sc.nextInt();
@@ -45,6 +47,12 @@ public class Practica4 {
                     break;
                 case 9:
                     Ejercicio9();
+                    break;
+                case 10:
+                    Ejercicio10();
+                    break;
+                case 11:
+                    Ejercicio11();
                     break;
                 default:
                     System.out.println("Opcion incorrecta");
@@ -255,6 +263,58 @@ public class Practica4 {
                 System.out.println(" ,ah recorrido "+k[i][j]+" kilometros en el dia "+(j+1));
             }
             System.out.println(" , habiendo recorrido en total "+tk[i]+" kilometros.");
+        }
+    }
+    public static void Ejercicio10(){
+        Scanner sc=new Scanner(System.in);
+        int v[][],ma=0;
+        v=new int[5][5];
+        System.out.println("Ejercicio 5.10");
+        for (int i=0; i<5; i++){
+            for (int j=0; j<5; j++){
+                System.out.print("Ingrese la venta del vendedor "+(i+1)+" del dia "+(j+1)+": ");
+                v[i][j]=sc.nextInt();
+            }
+            ma=v[i][i];
+        }
+        for (int i=0; i<5; i++){
+            for (int j=0; j<5; j++){
+                if (v[i][j]>ma){
+                    ma=v[i][j];
+                }
+            }
+        }
+        System.out.println("La mayor venta realizada es "+ma);
+    }
+    public static void Ejercicio11(){
+        Scanner sc=new Scanner(System.in);
+        int a[][],b[][],c[][],m,n;
+        System.out.println("Ejercicio 5.11");
+        System.out.print("Ingrese la cantidad de renglones: ");
+        m=sc.nextInt();
+        System.out.print("Ingrese la cantidad de columnas: ");
+        n=sc.nextInt();
+        a=new int[m][n];
+        b=new int[m][n];
+        c=new int[m][n];
+        for (int i=0; i<m; i++){
+            for (int j=0; j<n; j++){
+                System.out.print("Ingrese un valor a la matriz A  en el renglon "+(i+1)+" en la columna "+(j+1)+": ");
+                a[i][j]=sc.nextInt();
+                System.out.print("Ingrese un valor a la matriz B  en el renglon "+(i+1)+" en la columna "+(j+1)+": ");
+                b[i][j]=sc.nextInt();
+            }
+        }
+        for (int i=0; i<m; i++){
+            for (int j=0; j<n; j++){
+                c[i][j]=a[i][j]+b[i][j];
+            }
+        }
+        for (int i=0; i<m; i++){
+            for (int j=0; j<n; j++){
+                System.out.println("La suma de las matriz A y B da como resultado:");
+                System.out.println(c[i][j]);
+            }
         }
     }
 }
