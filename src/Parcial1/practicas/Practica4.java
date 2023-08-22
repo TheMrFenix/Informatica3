@@ -244,7 +244,7 @@ public class Practica4 {
         k=new int[n][6];
         tk=new int[n];
         for (int i=0; i<n; i++){
-            System.out.print("Ingrese el nombre del chofer "+(1+1)+": ");
+            System.out.print("Ingrese el nombre del chofer "+(i+1)+": ");
             nc[i]=sc.next();
             for (int j=0; j<6; j++){
                 System.out.print("Ingrese la cantidad de kilometros recorridos por el chofer "+(i+1)+" en el dia "+(j+1)+": ");
