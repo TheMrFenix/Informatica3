@@ -80,7 +80,7 @@ public class Prueba1 {
     public static void Ejercicio3(){
         Scanner sc=new Scanner(System.in);
         String nc[];
-        int ht[][],hs[],mh[],auxh[];
+        int ht[][],hs[],mh[],auxh[],a=0,b=0;
         double ss[],sh[],st;
         ss=new double[5];
         sh=new double[5];
@@ -115,13 +115,23 @@ public class Prueba1 {
             }
             ss[i]=sh[i]*hs[i];
         }
+        do {
+            for (int i=0;i<5;i++){
+                if (mh[2]!=ht[i][4]){
+                    a++;
+                } else if (mh[2]==ht[i][4]){
+                    b=a+1;
+                    a++;
+                }
+            }
+        } while (a!=b);
         st=ss[0]+ss[1]+ss[2]+ss[3]+ss[4];
         for (int i=0;i<5;i++){
             System.out.println("El chofer "+(i+1)+" de nombre: "+nc[i]);
             System.out.println(" , ah trabajado "+hs[i]+" horas semanales");
             System.out.println(" , teniendo un sueldo semanal de "+ss[i]+" Bs.");
         }
-        System.out.println(" Concinderando que la mayor cantidad de horas es de "+mh[2]+".");
+        System.out.println(" Concinderando que el chofer "+b+" a trabajado mas horas el dia viernes.");
         System.out.println(" La empresa tendra que pagar en sueldos un total de "+st+" Bs.");
     }
 }
