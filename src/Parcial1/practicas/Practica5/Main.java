@@ -1,0 +1,51 @@
+package Parcial1.practicas.Practica5;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        Persona alum=new Persona();
+        System.out.println("Ingrese los datos del Alumno");
+        System.out.print("Nombre: ");
+        String nom=sc.next();
+        alum.setNombre_alumno(nom);
+        System.out.print("Apellido: ");
+        String ape=sc.next();
+        alum.setApellido_alumno(ape);
+        System.out.print("Edad: ");
+        int ed=sc.nextInt();
+        alum.setEdad_alumno(ed);
+        Materia mat=new Materia();
+        System.out.println("Ingrese las 3 notas de cada materia");
+        System.out.print("Nota 1 en la primera materia: ");
+        Double fc1=sc.nextDouble();
+        mat.setFisicaCuantica1(fc1);
+        System.out.print("Nota 2 en la primera materia: ");
+        Double fc2=sc.nextDouble();
+        mat.setFisicaCuantica2(fc2);
+        System.out.print("Nota 3 en la primera materia: ");
+        Double fc3=sc.nextDouble();
+        mat.setFisicaCuantica3(fc3);
+        System.out.print("Nota 1 en la segunda materia: ");
+        Double nt1=sc.nextDouble();
+        mat.setNanotecnologia1(nt1);
+        System.out.print("Nota 2 en la segunda materia: ");
+        Double nt2=sc.nextDouble();
+        mat.setNanotecnologia2(nt2);
+        System.out.print("Nota 3 en la segunda materia: ");
+        Double nt3=sc.nextDouble();
+        mat.setNanotecnologia3(nt3);
+        System.out.print("Nota 1 en la tercera materia: ");
+        Double ma1=sc.nextDouble();
+        mat.setMagiaAvanzada1(ma1);
+        System.out.print("Nota 2 en la tercera materia: ");
+        Double ma2=sc.nextDouble();
+        mat.setMagiaAvanzada2(ma2);
+        System.out.print("Nota 3 en la tercera materia: ");
+        Double ma3=sc.nextDouble();
+        mat.setMagiaAvanzada3(ma3);
+        System.out.println("El alumno ");
+        System.out.println(alum.toString());
+        System.out.println("Tiene las siguientes notas en las siguientes materias ");
+        System.out.println(mat.toString());
+    }
+}
