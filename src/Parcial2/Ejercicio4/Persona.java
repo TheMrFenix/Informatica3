@@ -1,4 +1,4 @@
-package parcial2.Ejercicio4;
+package Parcial2.Ejercicio4;
 public class Persona {
     private String nombre;
     private String apellido_paterno;

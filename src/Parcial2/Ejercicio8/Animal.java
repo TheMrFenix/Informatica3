@@ -1,4 +1,4 @@
-package parcial2.Ejercicio8;
+package Parcial2.Ejercicio8;
 public class Animal {
     private String nombre;
     public Animal(String nombre) {

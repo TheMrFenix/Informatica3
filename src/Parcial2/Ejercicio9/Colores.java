@@ -1,4 +1,4 @@
-package parcial2.Ejercicio9;
+package Parcial2.Ejercicio9;
 public class Colores {
     private String nombre;
     public Colores(String nombre) {

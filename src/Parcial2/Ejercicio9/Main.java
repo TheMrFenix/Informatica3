@@ -1,4 +1,4 @@
-package parcial2.Ejercicio9;
+package Parcial2.Ejercicio9;
 import java.util.LinkedList;
 import java.util.Queue;
 
