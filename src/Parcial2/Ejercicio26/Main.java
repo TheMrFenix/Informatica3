@@ -53,7 +53,7 @@ public class Main {
                                     y=true;
                                     break;
                                 }
-                                if (!y){
+                                if (y){
                                     System.out.println("La especie "+aux+", tiene "+cont+" Animales");
                                 }
                             }
