@@ -1,0 +1,5 @@
+1.-Crea un menú para agregar personas(Nombre completo y su ticket) a una cola, también que muestre cuantos hay en la cola, Cual es el primero en la cola y que libere la cola. Que se repita la operación hasta que el usuario decida finalizar el programa.
+
+2.Crea un menú para agregar libros(Nombre del libro, autor, categoría) en una pila, muestre el tamaño de la pila, muestra el ultimo elemento, libere la pila y que el programa se repita hasta que el usuario determine finalizarlo.
+
+3.Crea un menú para agregar  laptops(Nombre, marca, tipo, código) en una lista, Busque una laptop por su nombre y los liste, elimine la laptop que el usuario indique y muestre todos los elementos de la lista, el programa se ejecutara hasta que el usuario lo finalice.
