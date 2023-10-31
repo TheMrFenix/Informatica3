@@ -1,6 +1,6 @@
-package Parcial3.Practicas;
+package Parcial3.Practicas.practicaArbol3;
 
-public class Arboles1 {
+public class Arboles3 {
     public static void main(String[] args) {
         ArbolBinario arbol=new ArbolBinario();
         arbol.insertar(50);
@@ -13,8 +13,10 @@ public class Arboles1 {
 
         System.out.println("Arbol en orden:");
         arbol.imprimirEnOrden();
-        System.out.print("Altura del arbol:");
-
+        System.out.println();
+        System.out.println("Altura del arbol: "+arbol.calcularAltura(arbol.raiz));
+        System.out.println("La cantidad de nodos del arbol es: "+(arbol.contarNodos(arbol.raiz)+2));
+        System.out.println("El nodo con el valor minimo es: "+arbol.encontrarMinimo(arbol.raiz));
     }
 }
 class Nodo{
@@ -57,13 +59,30 @@ class ArbolBinario{
             imprimirEnOrden(nodo.derecha);
         }
     }
-    public int calcularAltura(Nodo nodo){
-        if (nodo==null){
+    public int calcularAltura(Nodo raiz){
+        if (raiz==null){
             return 0;
         } else {
-            int alturaIzquierda=calcularAltura(nodo.izquierda);
-            int alturaDeracha=calcularAltura(nodo.derecha);
+            int alturaIzquierda=calcularAltura(raiz.izquierda);
+            int alturaDeracha=calcularAltura(raiz.derecha);
             return Math.max(alturaIzquierda,alturaDeracha)+1;
         }
+    }
+    public int contarNodos(Nodo raiz){
+        if (raiz==null){
+            return 0;
+        } else {
+            int cantidadIzquierda=calcularAltura(raiz.izquierda);
+            int cantidadDeracha=calcularAltura(raiz.derecha);
+            return cantidadIzquierda+cantidadDeracha+1;
+        }
+    }
+    public Nodo encontrarMinimo(Nodo raiz){
+        if (raiz==null){
+            return null;
+        } while (raiz.izquierda!=null){
+            raiz=raiz.izquierda;
+        }
+        return raiz;
     }
 }
