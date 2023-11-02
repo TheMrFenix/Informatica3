@@ -16,7 +16,8 @@ public class Arboles3 {
         System.out.println();
         System.out.println("Altura del arbol: "+arbol.calcularAltura(arbol.raiz));
         System.out.println("La cantidad de nodos del arbol es: "+(arbol.contarNodos(arbol.raiz)+2));
-        System.out.println("El nodo con el valor minimo es: "+arbol.encontrarMinimo(arbol.raiz));
+        Nodo valorMinimo = arbol.encontrarMinimo(arbol.raiz);
+        System.out.println("El valor minimo del valor del arbol es: " + valorMinimo.valor);
     }
 }
 class Nodo{
@@ -77,12 +78,13 @@ class ArbolBinario{
             return cantidadIzquierda+cantidadDeracha+1;
         }
     }
-    public Nodo encontrarMinimo(Nodo raiz){
-        if (raiz==null){
+    public Nodo encontrarMinimo(Nodo nodo) {
+        if (nodo == null){
             return null;
-        } while (raiz.izquierda!=null){
-            raiz=raiz.izquierda;
         }
-        return raiz;
+        while (nodo.izquierda != null) {
+            nodo = nodo.izquierda;
+        }
+        return nodo;
     }
 }
