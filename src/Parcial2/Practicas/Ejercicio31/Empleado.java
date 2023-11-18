@@ -1,4 +1,4 @@
-package Parcial2.Ejercicio31;
+package Parcial2.Practicas.Ejercicio31;
 public class Empleado {
     private String nombre;
     private Double salario;

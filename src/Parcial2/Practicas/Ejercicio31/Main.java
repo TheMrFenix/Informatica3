@@ -1,4 +1,4 @@
-package Parcial2.Ejercicio31;
+package Parcial2.Practicas.Ejercicio31;
 import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
