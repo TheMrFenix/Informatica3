@@ -58,7 +58,7 @@ public class Proyectos_actuales {
         ArrayList<Proyectos_actuales> listaProyectosA=new ArrayList<>();
         try {
             statement=conex.conectar().createStatement();
-            rows=statement.executeQuery("SELECT * FROM Proyectos_actuales");
+            rows=statement.executeQuery("SELECT * FROM proyectos_actuales");
             while (rows.next()){
                 Proyectos_actuales pya=new Proyectos_actuales();
                 pya.setId(rows.getInt("id"));
@@ -78,7 +78,7 @@ public class Proyectos_actuales {
     public String registrarProyectosA(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO Proyectos_actuales(nombre, presupusto_asignado, tiempo_estimado, proyectos_concluidos_id)";
+            String sql="INSERT INTO proyectos_actuales(nombre, presupusto_asignado, tiempo_estimado, proyectos_concluidos_id)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
@@ -95,7 +95,7 @@ public class Proyectos_actuales {
     public String actualizarProyectosA(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE Proyectos_actuales SET nombre=?, presupuesto_asignado=?, tiempo_estimado=?, proyectos_concluidos_id=? WHERE id=?";
+            String sql="UPDATE proyectos_actuales SET nombre=?, presupuesto_asignado=?, tiempo_estimado=?, proyectos_concluidos_id=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
@@ -113,7 +113,7 @@ public class Proyectos_actuales {
     public String eliminarProyectosA(){
         Conexion conex=new Conexion();
         try {
-            String sql="DELETE FROM Proyectos_actuales WHERE id=?";
+            String sql="DELETE FROM proyectos_actuales WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.id);
             int rowsInserted=preparedStatement.executeUpdate();

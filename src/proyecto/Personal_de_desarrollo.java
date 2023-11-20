@@ -75,7 +75,7 @@ public class Personal_de_desarrollo {
         ArrayList<Personal_de_desarrollo> listaPersonalD=new ArrayList<>();
         try {
             statement=conex.conectar().createStatement();
-            rows=statement.executeQuery(" SELECT * FROM Personal_de_desarrollo");
+            rows=statement.executeQuery(" SELECT * FROM personal_de_desarrollo");
             while (rows.next()){
                 Personal_de_desarrollo pdd=new Personal_de_desarrollo();
                 pdd.setId(rows.getInt("id"));
@@ -97,7 +97,7 @@ public class Personal_de_desarrollo {
     public String registrarPersonalD(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO Personal_de_desarrollo(horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion, especializacion, departamentos_de_trabajo_id)";
+            String sql="INSERT INTO personal_de_desarrollo(horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion, especializacion, departamentos_de_trabajo_id)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.horas_de_trabajo);
             preparedStatement.setDouble(2, this.sueldo_semanal);
@@ -116,7 +116,7 @@ public class Personal_de_desarrollo {
     public String actualizarPersonalD(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE Personal_de_desarrollo SET horas_de_trabajo=?, sueldo_semanal=?, fecha_de_contratacion=?, fecha_de_finalizacion=?, especializacion=?, departamentos_de_trabajo_id=? WHERE id=?";
+            String sql="UPDATE personal_de_desarrollo SET horas_de_trabajo=?, sueldo_semanal=?, fecha_de_contratacion=?, fecha_de_finalizacion=?, especializacion=?, departamentos_de_trabajo_id=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.horas_de_trabajo);
             preparedStatement.setDouble(2, this.sueldo_semanal);
@@ -136,7 +136,7 @@ public class Personal_de_desarrollo {
     public String eliminarPersonalD(){
         Conexion conex=new Conexion();
         try {
-            String sql="DELETE FROM Personal_de_desarrollo WHERE id=?";
+            String sql="DELETE FROM personal_de_desarrollo WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.id);
             int rowsInserted=preparedStatement.executeUpdate();

@@ -58,7 +58,7 @@ public class Departamentos_de_trabajo {
         ArrayList<Departamentos_de_trabajo> listaDepartamentos=new ArrayList<>();
         try {
             statement=conex.conectar().createStatement();
-            rows=statement.executeQuery("SELECT * FROM Departamentos_de_trabajo");
+            rows=statement.executeQuery("SELECT * FROM departamentos_de_trabajo");
             while (rows.next()){
                 Departamentos_de_trabajo ddt=new Departamentos_de_trabajo();
                 ddt.setId(rows.getInt("id"));
@@ -78,7 +78,7 @@ public class Departamentos_de_trabajo {
     public String registrarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO Departamentos_de_trabajo (nombre, presupuesto_asignado, gastos, proyectos_actuales_id)";
+            String sql="INSERT INTO departamentos_de_trabajo (nombre, presupuesto_asignado, gastos, proyectos_actuales_id)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
@@ -95,7 +95,7 @@ public class Departamentos_de_trabajo {
     public String actualizarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE Departamentos_de_trabajo SET nombre=?, presupuesto_asignado=?, gastos=?, proyectos_actuales_id=? WHERE id=?";
+            String sql="UPDATE departamentos_de_trabajo SET nombre=?, presupuesto_asignado=?, gastos=?, proyectos_actuales_id=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
@@ -113,7 +113,7 @@ public class Departamentos_de_trabajo {
     public String eliminarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="DELETE FROM Departamentos_de_trabajo WHERE id=?";
+            String sql="DELETE FROM departamentos_de_trabajo WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.id);
             int rowsInserted=preparedStatement.executeUpdate();

@@ -98,7 +98,7 @@ public class Cliente {
         ArrayList<Cliente> listaCliente=new ArrayList<>();
         try {
             statement=conex.conectar().createStatement();
-            rows=statement.executeQuery("SELECT * FROM Cliente");
+            rows=statement.executeQuery("SELECT * FROM cliente");
             while (rows.next()){
                 Cliente cli=new Cliente();
                 cli.setId(rows.getInt("id"));
@@ -123,7 +123,7 @@ public class Cliente {
     public String registrarCliente(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO Cliente (apodo, nombre, apellido_paterno, apellido_materno, pais, direccion_email, telefono, contraseña, tienda_de_juegos_id)";
+            String sql="INSERT INTO cliente (apodo, nombre, apellido_paterno, apellido_materno, pais, direccion_email, telefono, contraseña, tienda_de_juegos_id)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.apodo);
             preparedStatement.setString(2, this.nombre);
@@ -145,7 +145,7 @@ public class Cliente {
     public String actualizarCliente(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE Cliente SET apodo=?, nombre=?, apellido_paterno=?, apellido_materno=?, pais=?, direccion_email=?, telefono=?, contraseña=?, tienda_de_juegos_id=? WHERE id=?";
+            String sql="UPDATE cliente SET apodo=?, nombre=?, apellido_paterno=?, apellido_materno=?, pais=?, direccion_email=?, telefono=?, contraseña=?, tienda_de_juegos_id=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.apodo);
             preparedStatement.setString(2, this.nombre);
@@ -168,7 +168,7 @@ public class Cliente {
     public String eliminarCliente(){
         Conexion conex=new Conexion();
         try {
-            String sql="DELETE FROM Cliente WHERE id=?";
+            String sql="DELETE FROM cliente WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.id);
             int rowsInserted=preparedStatement.executeUpdate();

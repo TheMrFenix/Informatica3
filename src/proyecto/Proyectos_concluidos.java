@@ -84,7 +84,7 @@ public class Proyectos_concluidos {
         ArrayList<Proyectos_concluidos> listaProyectosC=new ArrayList<>();
         try {
             statement=conex.conectar().createStatement();
-            rows=statement.executeQuery("SELECT * FROM Proyectos_concluidos");
+            rows=statement.executeQuery("SELECT * FROM proyectos_concluidos");
             while (rows.next()){
                 Proyectos_concluidos pyc=new Proyectos_concluidos();
                 pyc.setId(rows.getInt("id"));
@@ -107,7 +107,7 @@ public class Proyectos_concluidos {
     public String registrarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO Proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales, juegos_propios_id)";
+            String sql="INSERT INTO proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales, juegos_propios_id)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setString(2, this.titulo_comercial);
@@ -127,7 +127,7 @@ public class Proyectos_concluidos {
     public String actualizarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE Proyectos_concluidos SET nombre=?, titulo_comercial=?, fecha_de_finalizacion=?, fecha_de_lanzamiento=?, presupuesto_invertido=?, ganancias_totales=?, juegos_propios_id=? WHERE id=?";
+            String sql="UPDATE proyectos_concluidos SET nombre=?, titulo_comercial=?, fecha_de_finalizacion=?, fecha_de_lanzamiento=?, presupuesto_invertido=?, ganancias_totales=?, juegos_propios_id=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setString(2, this.titulo_comercial);
@@ -148,7 +148,7 @@ public class Proyectos_concluidos {
     public String eliminarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="DELETE FROM Proyectos_concluidos WHERE id=?";
+            String sql="DELETE FROM proyectos_concluidos WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
