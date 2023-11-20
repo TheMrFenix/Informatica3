@@ -106,7 +106,7 @@ public class Rol {
     public String registrarRol(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO rol(titulo, fecha_de_lanzamiento, desarrollador, editor, precio_de_compra)";
+            String sql="INSERT INTO rol(titulo, fecha_de_lanzamiento, desarrollador, editor, precio_de_compra) VALUES(?,?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo);
             preparedStatement.setDate(2, (java.sql.Date) this.fecha_de_lanzamiento);

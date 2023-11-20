@@ -78,7 +78,7 @@ public class Proyectos_actuales {
     public String registrarProyectosA(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO proyectos_actuales(nombre, presupusto_asignado, tiempo_estimado)";
+            String sql="INSERT INTO proyectos_actuales(nombre, presupusto_asignado, tiempo_estimado) VALUES(?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);

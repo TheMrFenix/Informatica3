@@ -9,7 +9,7 @@ public class Catalogo_principal {
     private int id;
     private String titulo;
     private String genero;
-    private Date fehca_de_lanzamiento;
+    private Date fecha_de_lanzamiento;
     private String desarrollador;
     private String editor;
     private Double precio_de_compra;
@@ -35,11 +35,11 @@ public class Catalogo_principal {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public Date getFehca_de_lanzamiento() {
-        return fehca_de_lanzamiento;
+    public Date getFecha_de_lanzamiento() {
+        return fecha_de_lanzamiento;
     }
-    public void setFehca_de_lanzamiento(Date fehca_de_lanzamiento) {
-        this.fehca_de_lanzamiento = fehca_de_lanzamiento;
+    public void setFecha_de_lanzamiento(Date fecha_de_lanzamiento) {
+        this.fecha_de_lanzamiento = fecha_de_lanzamiento;
     }
     public String getDesarrollador() {
         return desarrollador;
@@ -77,7 +77,7 @@ public class Catalogo_principal {
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", genero='" + genero + '\'' +
-                ", fehca_de_lanzamiento=" + fehca_de_lanzamiento +
+                ", fehca_de_lanzamiento=" + fecha_de_lanzamiento +
                 ", desarrollador='" + desarrollador + '\'' +
                 ", editor='" + editor + '\'' +
                 ", precio_de_compra=" + precio_de_compra +
@@ -98,7 +98,7 @@ public class Catalogo_principal {
                 ctp.setId(rows.getInt("id"));
                 ctp.setTitulo(rows.getString("titulo"));
                 ctp.setGenero(rows.getString("genero"));
-                ctp.setFehca_de_lanzamiento(rows.getDate("fecha_de_lanzamiento"));
+                ctp.setFecha_de_lanzamiento(rows.getDate("fecha_de_lanzamiento"));
                 ctp.setDesarrollador(rows.getString("desarrollador"));
                 ctp.setEditor(rows.getString("editor"));
                 ctp.setPrecio_de_compra(rows.getDouble("precio_de_compra"));
@@ -120,7 +120,7 @@ public class Catalogo_principal {
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo);
             preparedStatement.setString(2, this.genero);
-            preparedStatement.setDate(3, (java.sql.Date) this.fehca_de_lanzamiento);
+            preparedStatement.setDate(3, (java.sql.Date) this.fecha_de_lanzamiento);
             preparedStatement.setString(4, this.desarrollador);
             preparedStatement.setString(5, this.editor);
             preparedStatement.setDouble(6, this.precio_de_compra);
@@ -139,7 +139,7 @@ public class Catalogo_principal {
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo);
             preparedStatement.setString(2, this.genero);
-            preparedStatement.setDate(3, (java.sql.Date) this.fehca_de_lanzamiento);
+            preparedStatement.setDate(3, (java.sql.Date) this.fecha_de_lanzamiento);
             preparedStatement.setString(4, this.desarrollador);
             preparedStatement.setString(5, this.editor);
             preparedStatement.setDouble(6, this.precio_de_compra);

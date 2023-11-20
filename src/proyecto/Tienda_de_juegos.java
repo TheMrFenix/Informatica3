@@ -96,7 +96,7 @@ public class Tienda_de_juegos {
     public String registrarTiendaJ(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO tienda_de_juegos (catalogo_principal, lista_de_generos, juegos_propios)";
+            String sql="INSERT INTO tienda_de_juegos (catalogo_principal, lista_de_generos, juegos_propios) VALUES(?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.catalogo_principal);
             preparedStatement.setInt(2, this.lista_de_generos);

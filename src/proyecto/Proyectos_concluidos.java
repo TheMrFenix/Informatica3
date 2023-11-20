@@ -107,7 +107,7 @@ public class Proyectos_concluidos {
     public String registrarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales)";
+            String sql="INSERT INTO proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales) VALUES(?,?,?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setString(2, this.titulo_comercial);

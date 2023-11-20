@@ -370,11 +370,9 @@ public class Main {
                     com1.setTitulo_de_juego(JOptionPane.showInputDialog("Ingrese el titulo que quiere comprar:"));
                     Double precio=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del juego:"));
                     com1.setPrecio_de_compra(precio);
-                    com1.setCodigo_de_tarjeta();
-                    JOptionPane.showMessageDialog(null, resp1);
-                    break;
-                case 2:
-                    menuCompraC();
+                    int codigo=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo de su tarjeta:"));
+                    com1.setCodigo_de_tarjeta(codigo);
+                    JOptionPane.showMessageDialog(null, com1.registrarCompra());
                     break;
             }
         }while (op!=0);
@@ -559,6 +557,788 @@ public class Main {
                     break;
                 case 5:
                     menuTiendaJE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuTiendaJE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu tienda de juego╣░░░░░\n" +
+                    "1» Registrar Tienda\n"+"2» Actualizar Tienda\n"+"3» Eliminar Tienda\n"+"4» Mostrar Tienda\n"+"5» Ingresar a catalogo principal\n"+"6» Ingresar a lista de generos\n"+"7» Ingresar a juegos propios\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Tienda_de_juegos tdj1=new Tienda_de_juegos();
+                    int catalogo=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos en el catalogo principal:"));
+                    tdj1.setCatalogo_principal(catalogo);
+                    int generos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos en la lista de generos:"));
+                    tdj1.setLista_de_generos(generos);
+                    int juegos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos propios:"));
+                    tdj1.setJuegos_propios(juegos);
+                    JOptionPane.showMessageDialog(null, tdj1.registrarTiendaJ());
+                    break;
+                case 2:
+                    Tienda_de_juegos tdj2=new Tienda_de_juegos();
+                    ArrayList<Tienda_de_juegos> lista1=new ArrayList<>();
+                    lista1=tdj2.listarTiendaJ();
+                    String resp="";
+                    String r="";
+                    for (Tienda_de_juegos tienda_de_juegos:lista1){
+                        resp+=tienda_de_juegos.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id de la opcion a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        int catalogo2=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos en el catalogo principal:"));
+                        tdj2.setCatalogo_principal(catalogo2);
+                        int generos2=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos en la lista de generos:"));
+                        tdj2.setLista_de_generos(generos2);
+                        int juegos2=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos propios:"));
+                        tdj2.setJuegos_propios(juegos2);
+                        JOptionPane.showMessageDialog(null, tdj2.actualizarTiendaJ());
+                    }
+                    break;
+                case 3:
+                    Tienda_de_juegos tdj3=new Tienda_de_juegos();
+                    ArrayList<Tienda_de_juegos> lista2=new ArrayList<>();
+                    lista2=tdj3.listarTiendaJ();
+                    String resp2="";
+                    String r2="";
+                    for (Tienda_de_juegos tienda_de_juegos:lista2){
+                        resp2+=tienda_de_juegos.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id de la opcion a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        tdj3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, tdj3.eliminarTiendaJ());
+                    }
+                    break;
+                case 4:
+                    Tienda_de_juegos tdj4=new Tienda_de_juegos();
+                    ArrayList<Tienda_de_juegos> lista3=new ArrayList<>();
+                    lista3=tdj4.listarTiendaJ();
+                    String resp3="";
+                    for (Tienda_de_juegos tienda_de_juegos:lista3){
+                        resp3+=tienda_de_juegos.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuCatalogoPE();
+                    break;
+                case 6:
+                    menuListaGE();
+                    break;
+                case 7:
+                    menuJuegosPE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuCatalogoPE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu catalogo principal╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a lista de generos\n"+"6» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Catalogo_principal ctp1=new Catalogo_principal();
+                    ctp1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    ctp1.setGenero(JOptionPane.showInputDialog("Ingrese el genero del jeugo:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    ctp1.setFecha_de_lanzamiento(date);
+                    ctp1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    ctp1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    ctp1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, ctp1.registrarCatalogoP());
+                    break;
+                case 2:
+                    Catalogo_principal ctp2=new Catalogo_principal();
+                    ArrayList<Catalogo_principal> listaE1=new ArrayList<>();
+                    listaE1=ctp2.listaCatalogoP();
+                    String resp="";
+                    String r="";
+                    for (Catalogo_principal catalogo_principal:listaE1){
+                        resp+=catalogo_principal.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        ctp2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        ctp2.setGenero(JOptionPane.showInputDialog("Ingrese el genero del jeugo:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        ctp2.setFecha_de_lanzamiento(date2);
+                        ctp2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        ctp2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        ctp2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, ctp2.actualizarCatalogoP());
+                    }
+                    break;
+                case 3:
+                    Catalogo_principal ctp3=new Catalogo_principal();
+                    ArrayList<Catalogo_principal> lista2=new ArrayList<>();
+                    lista2=ctp3.listaCatalogoP();
+                    String resp2="";
+                    String r2="";
+                    for (Catalogo_principal catalogo_principal:lista2){
+                        resp2+=catalogo_principal.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        ctp3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, ctp3.eliminarCatalogoP());
+                    }
+                    break;
+                case 4:
+                    Catalogo_principal ctp4=new Catalogo_principal();
+                    ArrayList<Catalogo_principal> lista3=new ArrayList<>();
+                    lista3=ctp4.listaCatalogoP();
+                    String resp3="";
+                    for (Catalogo_principal catalogo_principal:lista3){
+                        resp3+=catalogo_principal.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuListaGE();
+                break;
+                case 6:
+                    menuCompraE();
+                break;
+            }
+        }while (op!=0);
+    }
+    public static void menuListaGE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu lista de generos╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar ah accion\n"+"6» Ingresar ah aventura\n"+"7» Ingresar a estrategia\n"+"8» Ingresar a rol\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Lista_de_generos ldg1=new Lista_de_generos();
+                    ldg1.setTipo_de_genero(JOptionPane.showInputDialog("Ingrese el tipo de generos:"));
+                    int cantidad=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos>"));
+                    ldg1.setCantidad_de_juegos(cantidad);
+                    JOptionPane.showMessageDialog(null, ldg1.registrarListaG());
+                    break;
+                case 2:
+                    Lista_de_generos ldg2=new Lista_de_generos();
+                    ArrayList<Lista_de_generos> listaE1=new ArrayList<>();
+                    listaE1=ldg2.listarListaG();
+                    String resp="";
+                    String r="";
+                    for (Lista_de_generos lista_de_generos:listaE1){
+                        resp+=lista_de_generos.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        ldg2.setTipo_de_genero(JOptionPane.showInputDialog("Ingrese el tipo de generos:"));
+                        int cantidad2=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de juegos>"));
+                        ldg2.setCantidad_de_juegos(cantidad2);
+                        JOptionPane.showMessageDialog(null, ldg2.actualizarListaG());
+                    }
+                    break;
+                case 3:
+                    Lista_de_generos ldg3=new Lista_de_generos();
+                    ArrayList<Lista_de_generos> lista2=new ArrayList<>();
+                    lista2=ldg3.listarListaG();
+                    String resp2="";
+                    String r2="";
+                    for (Lista_de_generos lista_de_generos:lista2){
+                        resp2+=lista_de_generos.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        ldg3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, ldg3.eliminarListaG());
+                    }
+                    break;
+                case 4:
+                    Lista_de_generos ldg4=new Lista_de_generos();
+                    ArrayList<Lista_de_generos> lista3=new ArrayList<>();
+                    lista3=ldg4.listarListaG();
+                    String resp3="";
+                    for (Lista_de_generos lista_de_generos:lista3){
+                        resp3+=lista_de_generos.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuAccionE();
+                    break;
+                case 6:
+                    menuAventuraE();
+                    break;
+                case 7:
+                    menuEstrategiaE();
+                    break;
+                case 8:
+                    menuRolE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuJuegosPE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu juegos propios╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a lista de generos\n"+"6» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Juegos_propios jgp1=new Juegos_propios();
+                    jgp1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    jgp1.setGenero(JOptionPane.showInputDialog("Ingrese el genero del jeugo:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    jgp1.setFecha_de_lanzamiento(date);
+                    jgp1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    jgp1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    jgp1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, jgp1.registrarJuegosP());
+                    break;
+                case 2:
+                    Juegos_propios jgp2=new Juegos_propios();
+                    ArrayList<Juegos_propios> listaE1=new ArrayList<>();
+                    listaE1=jgp2.listarJuegosP();
+                    String resp="";
+                    String r="";
+                    for (Juegos_propios juegos_propios:listaE1){
+                        resp+=juegos_propios.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        jgp2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        jgp2.setGenero(JOptionPane.showInputDialog("Ingrese el genero del jeugo:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        jgp2.setFecha_de_lanzamiento(date2);
+                        jgp2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        jgp2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        jgp2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, jgp2.actualizarJuegosP());
+                    }
+                    break;
+                case 3:
+                    Juegos_propios jgp3=new Juegos_propios();
+                    ArrayList<Juegos_propios> lista2=new ArrayList<>();
+                    lista2=jgp3.listarJuegosP();
+                    String resp2="";
+                    String r2="";
+                    for (Juegos_propios juegos_propios:lista2){
+                        resp2+=juegos_propios.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        jgp3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, jgp3.eliminarJuegosP());
+                    }
+                    break;
+                case 4:
+                    Juegos_propios jgp4=new Juegos_propios();
+                    ArrayList<Juegos_propios> lista3=new ArrayList<>();
+                    lista3=jgp4.listarJuegosP();
+                    String resp3="";
+                    for (Juegos_propios juegos_propios:lista3){
+                        resp3+=juegos_propios.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuListaGE();
+                    break;
+                case 6:
+                    menuCompraE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuAccionE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu accion╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Accion acc1=new Accion();
+                    acc1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    acc1.setFecha_de_lanzamiento(date);
+                    acc1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    acc1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    acc1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, acc1.registrarAccion());
+                    break;
+                case 2:
+                    Accion acc2=new Accion();
+                    ArrayList<Accion> listaE1=new ArrayList<>();
+                    listaE1=acc2.listarAccion();
+                    String resp="";
+                    String r="";
+                    for (Accion accion:listaE1){
+                        resp+=accion.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        acc2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        acc2.setFecha_de_lanzamiento(date2);
+                        acc2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        acc2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        acc2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, acc2.actulizarAccion());
+                    }
+                    break;
+                case 3:
+                    Accion acc3=new Accion();
+                    ArrayList<Accion> lista2=new ArrayList<>();
+                    lista2=acc3.listarAccion();
+                    String resp2="";
+                    String r2="";
+                    for (Accion accion:lista2){
+                        resp2+=accion.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        acc3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, acc3.eliminarAccion());
+                    }
+                    break;
+                case 4:
+                    Accion acc4=new Accion();
+                    ArrayList<Accion> lista3=new ArrayList<>();
+                    lista3=acc4.listarAccion();
+                    String resp3="";
+                    for (Accion accion:lista3){
+                        resp3+=accion.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuCompraE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuAventuraE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu aventura╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Aventura ave1=new Aventura();
+                    ave1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    ave1.setFecha_de_lanzamiento(date);
+                    ave1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    ave1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    ave1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, ave1.registrarAventura());
+                    break;
+                case 2:
+                    Aventura ave2=new Aventura();
+                    ArrayList<Aventura> listaE1=new ArrayList<>();
+                    listaE1=ave2.listarAventura();
+                    String resp="";
+                    String r="";
+                    for (Aventura aventura:listaE1){
+                        resp+=aventura.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        ave2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        ave2.setFecha_de_lanzamiento(date2);
+                        ave2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        ave2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        ave2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, ave2.actualizarAventura());
+                    }
+                    break;
+                case 3:
+                    Aventura ave3=new Aventura();
+                    ArrayList<Aventura> lista2=new ArrayList<>();
+                    lista2=ave3.listarAventura();
+                    String resp2="";
+                    String r2="";
+                    for (Aventura aventura:lista2){
+                        resp2+=aventura.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        ave3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, ave3.eliminarAventura());
+                    }
+                    break;
+                case 4:
+                    Aventura ave4=new Aventura();
+                    ArrayList<Aventura> lista3=new ArrayList<>();
+                    lista3=ave4.listarAventura();
+                    String resp3="";
+                    for (Aventura aventura:lista3){
+                        resp3+=aventura.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuCompraE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuEstrategiaE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu estrategia╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Estrategia est1=new Estrategia();
+                    est1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    est1.setFecha_de_lanzamiento(date);
+                    est1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    est1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    est1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, est1.registrarEstrategia());
+                    break;
+                case 2:
+                    Estrategia est2=new Estrategia();
+                    ArrayList<Estrategia> listaE1=new ArrayList<>();
+                    listaE1=est2.listarEstrategia();
+                    String resp="";
+                    String r="";
+                    for (Estrategia estrategia:listaE1){
+                        resp+=estrategia.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        est2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        est2.setFecha_de_lanzamiento(date2);
+                        est2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        est2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        est2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, est2.actualizarEstrategia());
+                    }
+                    break;
+                case 3:
+                    Estrategia est3=new Estrategia();
+                    ArrayList<Estrategia> lista2=new ArrayList<>();
+                    lista2=est3.listarEstrategia();
+                    String resp2="";
+                    String r2="";
+                    for (Estrategia estrategia:lista2){
+                        resp2+=estrategia.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        est3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, est3.eliminarEstrategia());
+                    }
+                    break;
+                case 4:
+                    Estrategia est4=new Estrategia();
+                    ArrayList<Estrategia> lista3=new ArrayList<>();
+                    lista3=est4.listarEstrategia();
+                    String resp3="";
+                    for (Estrategia estrategia:lista3){
+                        resp3+=estrategia.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuCompraE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuRolE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu rol╣░░░░░\n" +
+                    "1» Registrar Juegos\n"+"2» Actualizar Juegos\n"+"3» Eliminar Juegos\n"+"4» Mostrar Juegos\n"+"5» Ingresar a compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Rol rol1=new Rol();
+                    rol1.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                    String fechaF=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                    int d=Integer.parseInt(fechaF.substring(0,2));
+                    int m=Integer.parseInt(fechaF.substring(3,5));
+                    int a=Integer.parseInt(fechaF.substring(6));
+                    Calendar cal=Calendar.getInstance();
+                    cal.set(a,m-1,d);
+                    Date date=cal.getTime();
+                    rol1.setFecha_de_lanzamiento(date);
+                    rol1.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                    rol1.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                    Double pres=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                    rol1.setPrecio_de_compra(pres);
+                    JOptionPane.showMessageDialog(null, rol1.registrarRol());
+                    break;
+                case 2:
+                    Rol rol2=new Rol();
+                    ArrayList<Rol> listaE1=new ArrayList<>();
+                    listaE1=rol2.listarRol();
+                    String resp="";
+                    String r="";
+                    for (Rol rol:listaE1){
+                        resp+=rol.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id del juego a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        rol2.setTitulo(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        String fechaF2=JOptionPane.showInputDialog("Ingrese la fecha de lanzamiento:");
+                        int d2=Integer.parseInt(fechaF2.substring(0,2));
+                        int m2=Integer.parseInt(fechaF2.substring(3,5));
+                        int a2=Integer.parseInt(fechaF2.substring(6));
+                        Calendar cal2=Calendar.getInstance();
+                        cal2.set(a2,m2-1,d2);
+                        Date date2=cal2.getTime();
+                        rol2.setFecha_de_lanzamiento(date2);
+                        rol2.setDesarrollador(JOptionPane.showInputDialog("Ingrese el nombre del desarrollador:"));
+                        rol2.setEditor(JOptionPane.showInputDialog("Ingrese el nombre del editor:"));
+                        Double pres2=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio de compra:"));
+                        rol2.setPrecio_de_compra(pres2);
+                        JOptionPane.showMessageDialog(null, rol2.actualizarRol());
+                    }
+                    break;
+                case 3:
+                    Rol rol3=new Rol();
+                    ArrayList<Rol> lista2=new ArrayList<>();
+                    lista2=rol3.listarRol();
+                    String resp2="";
+                    String r2="";
+                    for (Rol rol:lista2){
+                        resp2+=rol.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        rol3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, rol3.eliminarRol());
+                    }
+                    break;
+                case 4:
+                    Rol rol4=new Rol();
+                    ArrayList<Rol> lista3=new ArrayList<>();
+                    lista3=rol4.listarRol();
+                    String resp3="";
+                    for (Rol rol:lista3){
+                        resp3+=rol.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
+                    break;
+                case 5:
+                    menuCompraE();
+                    break;
+            }
+        }while (op!=0);
+    }
+    public static void menuCompraE(){
+        String input;
+        int op;
+        do {
+            input=JOptionPane.showInputDialog("░░░░░╠Bienvenido al menu compra╣░░░░░\n" +
+                    "1» Actualizar Compra\n"+"3» Eliminar Compra\n"+"4» Mostrar Compra\n"+"0» Salir");
+            if (input==null){
+                op=0;
+            }else {
+                op=Integer.parseInt(input);
+            }
+            switch (op){
+                case 1:
+                    Compra com1=new Compra();
+                    ArrayList<Compra> listaE1=new ArrayList<>();
+                    listaE1=com1.listarCompra();
+                    String resp="";
+                    String r="";
+                    for (Compra compra:listaE1){
+                        resp+=compra.toString()+"\n";
+                    }
+                    r=JOptionPane.showInputDialog("Ingrese el id de la compra a modificar\n"+resp);
+                    if (r==null){
+                        JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                    }else {
+                        com1.setTitulo_de_juego(JOptionPane.showInputDialog("Ingrese el titulo del juego:"));
+                        Double precio=Double.parseDouble(JOptionPane.showInputDialog("Ingrese el titulo del juegos:"));
+                        com1.setPrecio_de_compra(precio);
+                        int codigo=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio del juego:"));
+                        com1.setCodigo_de_tarjeta(codigo);
+                        JOptionPane.showMessageDialog(null, com1.actualizarCompra());
+                    }
+                    break;
+                case 3:
+                    Accion acc3=new Accion();
+                    ArrayList<Accion> lista2=new ArrayList<>();
+                    lista2=acc3.listarAccion();
+                    String resp2="";
+                    String r2="";
+                    for (Accion accion:lista2){
+                        resp2+=accion.toString()+"\n";
+                    }
+                    r2=JOptionPane.showInputDialog("Ingrese el id del juego a eliminar\n"+resp2);
+                    if (r2==null){
+                        JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                    }else {
+                        acc3.setId(Integer.parseInt(r2));
+                        JOptionPane.showMessageDialog(null, acc3.eliminarAccion());
+                    }
+                    break;
+                case 4:
+                    Accion acc4=new Accion();
+                    ArrayList<Accion> lista3=new ArrayList<>();
+                    lista3=acc4.listarAccion();
+                    String resp3="";
+                    for (Accion accion:lista3){
+                        resp3+=accion.toString()+"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, resp3);
                     break;
             }
         }while (op!=0);

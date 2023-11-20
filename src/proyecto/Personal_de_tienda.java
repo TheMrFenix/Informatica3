@@ -89,7 +89,7 @@ public class Personal_de_tienda {
     public String registrarPersonalT(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO personal_de_tienda (horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion)";
+            String sql="INSERT INTO personal_de_tienda (horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion) VALUES(?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.horas_de_trabajo);
             preparedStatement.setDouble(2, this.sueldo_semanal);
