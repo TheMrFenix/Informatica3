@@ -51,7 +51,7 @@ public class Lista_de_generos {
     public String registrarListaG(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO lista_de_generos (tipo_de_genero)";
+            String sql="INSERT INTO lista_de_generos (tipo_de_genero) VALUES(?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.tipo_de_genero);
             int rowsInserted=preparedStatement.executeUpdate();

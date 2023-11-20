@@ -77,7 +77,7 @@ public class Proyectos_concluidos {
                 ", juegos_propios_id=" + juegos_propios_id +
                 '}';
     }
-    public ArrayList<Proyectos_concluidos> listarDatos(){
+    public ArrayList<Proyectos_concluidos> listarProyectosC(){
             Statement statement;
             ResultSet rows;
             Conexion conex=new Conexion();
@@ -107,7 +107,7 @@ public class Proyectos_concluidos {
     public String registrarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales, juegos_propios_id)";
+            String sql="INSERT INTO proyectos_concluidos (nombre, titulo_comercial, fecha_de_finalizacion, fecha_de_lanzamiento, presupuesto_invertido, ganancias_totales)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setString(2, this.titulo_comercial);
@@ -115,7 +115,6 @@ public class Proyectos_concluidos {
             preparedStatement.setDate(4, (java.sql.Date) this.fecha_de_lanzamiento);
             preparedStatement.setDouble(5, this.presupuesto_invertido);
             preparedStatement.setDouble(6, this.ganacias_totales);
-            preparedStatement.setInt(7, this.juegos_propios_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -127,7 +126,7 @@ public class Proyectos_concluidos {
     public String actualizarProyectosC(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE proyectos_concluidos SET nombre=?, titulo_comercial=?, fecha_de_finalizacion=?, fecha_de_lanzamiento=?, presupuesto_invertido=?, ganancias_totales=?, juegos_propios_id=? WHERE id=?";
+            String sql="UPDATE proyectos_concluidos SET nombre=?, titulo_comercial=?, fecha_de_finalizacion=?, fecha_de_lanzamiento=?, presupuesto_invertido=?, ganancias_totales=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setString(2, this.titulo_comercial);
@@ -135,8 +134,7 @@ public class Proyectos_concluidos {
             preparedStatement.setDate(4, (java.sql.Date) this.fecha_de_lanzamiento);
             preparedStatement.setDouble(5, this.presupuesto_invertido);
             preparedStatement.setDouble(6, this.ganacias_totales);
-            preparedStatement.setInt(7, this.juegos_propios_id);
-            preparedStatement.setInt(8, this.id);
+            preparedStatement.setInt(7, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizadas: "+rowsInserted;

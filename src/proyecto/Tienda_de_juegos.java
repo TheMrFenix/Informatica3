@@ -96,14 +96,11 @@ public class Tienda_de_juegos {
     public String registrarTiendaJ(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO tienda_de_juegos (catalogo_principal, lista_de_generos, juegos_propios, catalogo_principal_id, lista_de_generos_id, juego_propios_id)";
+            String sql="INSERT INTO tienda_de_juegos (catalogo_principal, lista_de_generos, juegos_propios)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.catalogo_principal);
             preparedStatement.setInt(2, this.lista_de_generos);
             preparedStatement.setInt(3, this.juegos_propios);
-            preparedStatement.setInt(4, this.catalogo_principal_id);
-            preparedStatement.setInt(5, this.lista_de_generos_id);
-            preparedStatement.setInt(6, this.juegos_propios_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -115,15 +112,12 @@ public class Tienda_de_juegos {
     public String actualizarTiendaJ(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE tienda_de_juegos SET catalogo_principal=?, lista_de_generos=?, juegos_propios=?, catalogo_principal_id=?, lista_de_generos_id=?, juegos_propios_id=? WHERE id=?";
+            String sql="UPDATE tienda_de_juegos SET catalogo_principal=?, lista_de_generos=?, juegos_propios=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.catalogo_principal);
             preparedStatement.setInt(2, this.lista_de_generos);
             preparedStatement.setInt(3, this.juegos_propios);
-            preparedStatement.setInt(4, this.catalogo_principal_id);
-            preparedStatement.setInt(5, this.lista_de_generos_id);
-            preparedStatement.setInt(6, this.juegos_propios_id);
-            preparedStatement.setInt(7, this.id);
+            preparedStatement.setInt(4, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizadas: "+rowsInserted;

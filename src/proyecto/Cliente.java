@@ -112,6 +112,7 @@ public class Cliente {
                 cli.setContraseña(rows.getString("contraseña"));
                 cli.setTienda_de_juegos_id(rows.getInt("tienda_de_juegos_id"));
                 listaCliente.add(cli);
+
             }
             conex.desconectar();
             return listaCliente;
@@ -123,7 +124,7 @@ public class Cliente {
     public String registrarCliente(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO cliente (apodo, nombre, apellido_paterno, apellido_materno, pais, direccion_email, telefono, contraseña, tienda_de_juegos_id)";
+            String sql="INSERT INTO cliente (apodo, nombre, apellido_paterno, apellido_materno, pais, direccion_email, telefono, contraseña) VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.apodo);
             preparedStatement.setString(2, this.nombre);
@@ -133,7 +134,6 @@ public class Cliente {
             preparedStatement.setString(6, this.direccion_email);
             preparedStatement.setInt(7, this.telefono);
             preparedStatement.setString(8, this.contraseña);
-            preparedStatement.setInt(9, this.tienda_de_juegos_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -145,7 +145,7 @@ public class Cliente {
     public String actualizarCliente(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE cliente SET apodo=?, nombre=?, apellido_paterno=?, apellido_materno=?, pais=?, direccion_email=?, telefono=?, contraseña=?, tienda_de_juegos_id=? WHERE id=?";
+            String sql="UPDATE cliente SET apodo=?, nombre=?, apellido_paterno=?, apellido_materno=?, pais=?, direccion_email=?, telefono=?, contraseña=?WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.apodo);
             preparedStatement.setString(2, this.nombre);
@@ -155,8 +155,7 @@ public class Cliente {
             preparedStatement.setString(6, this.direccion_email);
             preparedStatement.setInt(7, this.telefono);
             preparedStatement.setString(8, this.contraseña);
-            preparedStatement.setInt(9, this.tienda_de_juegos_id);
-            preparedStatement.setInt(10, this.id);
+            preparedStatement.setInt(9, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizada: "+rowsInserted;

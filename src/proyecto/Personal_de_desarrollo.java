@@ -97,14 +97,13 @@ public class Personal_de_desarrollo {
     public String registrarPersonalD(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO personal_de_desarrollo(horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion, especializacion, departamentos_de_trabajo_id)";
+            String sql="INSERT INTO personal_de_desarrollo(horas_de_trabajo, sueldo_semanal, fecha_de_contratacion, fecha_de_finalizacion, especializacion) VALUES(?,?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.horas_de_trabajo);
             preparedStatement.setDouble(2, this.sueldo_semanal);
             preparedStatement.setDate(3, (java.sql.Date) this.fecha_de_contratacion);
             preparedStatement.setDate(4, (java.sql.Date) this.fecha_de_finalizacion);
             preparedStatement.setString(5, this.especializacion);
-            preparedStatement.setInt(6, this.departamentos_de_trabajo_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -116,15 +115,14 @@ public class Personal_de_desarrollo {
     public String actualizarPersonalD(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE personal_de_desarrollo SET horas_de_trabajo=?, sueldo_semanal=?, fecha_de_contratacion=?, fecha_de_finalizacion=?, especializacion=?, departamentos_de_trabajo_id=? WHERE id=?";
+            String sql="UPDATE personal_de_desarrollo SET horas_de_trabajo=?, sueldo_semanal=?, fecha_de_contratacion=?, fecha_de_finalizacion=?, especializacion=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setInt(1, this.horas_de_trabajo);
             preparedStatement.setDouble(2, this.sueldo_semanal);
             preparedStatement.setDate(3, (java.sql.Date) this.fecha_de_contratacion);
             preparedStatement.setDate(4, (java.sql.Date) this.fecha_de_finalizacion);
             preparedStatement.setString(5, this.especializacion);
-            preparedStatement.setInt(6, this.departamentos_de_trabajo_id);
-            preparedStatement.setInt(7, this.id);
+            preparedStatement.setInt(6, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizadas: "+rowsInserted;

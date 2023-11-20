@@ -69,7 +69,7 @@ public class Compra {
     public String registrarCompra(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO compra (titulo_de_juego, precio_de_compra, codigo_de_tarjeta)";
+            String sql="INSERT INTO compra (titulo_de_juego, precio_de_compra, codigo_de_tarjeta) VALUES(?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo_de_juego);
             preparedStatement.setDouble(2, this.precio_de_compra);

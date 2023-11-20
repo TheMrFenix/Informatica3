@@ -51,7 +51,7 @@ public class Departamentos_de_trabajo {
                 ", proyectos_actuales_id=" + proyectos_actuales_id +
                 '}';
     }
-    public ArrayList<Departamentos_de_trabajo> listarDatos(){
+    public ArrayList<Departamentos_de_trabajo> listarDepartamentoT(){
             Statement statement;
             ResultSet rows;
             Conexion conex=new Conexion();
@@ -78,12 +78,11 @@ public class Departamentos_de_trabajo {
     public String registrarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO departamentos_de_trabajo (nombre, presupuesto_asignado, gastos, proyectos_actuales_id)";
+            String sql="INSERT INTO departamentos_de_trabajo (nombre, presupuesto_asignado, gastos) VALUES(?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
             preparedStatement.setDouble(3, this.gastos);
-            preparedStatement.setInt(4, this.proyectos_actuales_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -95,13 +94,12 @@ public class Departamentos_de_trabajo {
     public String actualizarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE departamentos_de_trabajo SET nombre=?, presupuesto_asignado=?, gastos=?, proyectos_actuales_id=? WHERE id=?";
+            String sql="UPDATE departamentos_de_trabajo SET nombre=?, presupuesto_asignado=?, gastos=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
             preparedStatement.setDouble(3, this.gastos);
-            preparedStatement.setInt(4, this.proyectos_actuales_id);
-            preparedStatement.setInt(5, this.id);
+            preparedStatement.setInt(4, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizadas: "+rowsInserted;

@@ -116,7 +116,7 @@ public class Catalogo_principal {
     public String registrarCatalogoP(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO catalogo_principal (titulo, genero, fecha_de_lanzamiento, desarrollador, editor, precio_de_compra, lista_de_generos_id, compra_id)";
+            String sql="INSERT INTO catalogo_principal (titulo, genero, fecha_de_lanzamiento, desarrollador, editor, precio_de_compra) VALUES(?,?,?,?,?,?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo);
             preparedStatement.setString(2, this.genero);
@@ -124,8 +124,6 @@ public class Catalogo_principal {
             preparedStatement.setString(4, this.desarrollador);
             preparedStatement.setString(5, this.editor);
             preparedStatement.setDouble(6, this.precio_de_compra);
-            preparedStatement.setInt(7, this.lista_de_generos_id);
-            preparedStatement.setInt(8, this.compra_id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas insertadas: "+rowsInserted;
@@ -137,7 +135,7 @@ public class Catalogo_principal {
     public String actualizarCatalogoP(){
         Conexion conex=new Conexion();
         try {
-            String sql="UPDATE catalogo_principal SET titulo=?, genero=?, fecha_de_lanzamiento=?, desarrollador=?, editor=?, precio_de_compra=?, lista_de_generos_id=?, compra_id=? WHERE id=?";
+            String sql="UPDATE catalogo_principal SET titulo=?, genero=?, fecha_de_lanzamiento=?, desarrollador=?, editor=?, precio_de_compra=? WHERE id=?";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.titulo);
             preparedStatement.setString(2, this.genero);
@@ -145,9 +143,7 @@ public class Catalogo_principal {
             preparedStatement.setString(4, this.desarrollador);
             preparedStatement.setString(5, this.editor);
             preparedStatement.setDouble(6, this.precio_de_compra);
-            preparedStatement.setInt(7, this.lista_de_generos_id);
-            preparedStatement.setInt(8, this.compra_id);
-            preparedStatement.setInt(9, this.id);
+            preparedStatement.setInt(7, this.id);
             int rowsInserted=preparedStatement.executeUpdate();
             conex.desconectar();
             return "Filas Actualizadas: "+rowsInserted;
