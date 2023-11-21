@@ -9,7 +9,7 @@ public class Main {
         String input;
         do {
             input=JOptionPane.showInputDialog("░░░░░╠Vienbenido a Fenix World Games®╣░░░░░\n" +
-                    "1» Cliente\n"+"2» Empleado\n"+"0» Salir");
+                    "1» Cliente\n"+"2» Empleado\n"+"3» Alfa\n"+"0» Salir");
             if (input==null){
                 op=0;
                 JOptionPane.showMessageDialog(null,"Gracias por visitarnos");
@@ -19,8 +19,13 @@ public class Main {
             switch (op){
                 case 1:
                     menuCliente();
+                    break;
                 case 2:
                     menuEmpleado();
+                    break;
+                case 3:
+                    Alfa();
+                    break;
             }
         }while (op!=0);
     }
@@ -1797,6 +1802,68 @@ public class Main {
                     JOptionPane.showMessageDialog(null, resp3);
                     break;
             }
+        }while (op!=0);
+    }
+    public static void Alfa(){
+        String input;
+        int op;
+        input=JOptionPane.showInputDialog("░░░░░╠Bienvenido a alfa╣░░░░░\n" +
+                "1» Registrar alfa\n"+"2» Actualizar alfa\n"+"3» Eliminar alfa\n"+"4» Mostrar alfa\n"+"0» Salir");
+        if (input==null){
+            op=0;
+        }else {
+            op=Integer.parseInt(input);
+        }
+        switch (op){
+            case 1:
+                Alfa a1=new Alfa();
+                a1.setNumero(JOptionPane.showInputDialog("Ingresar numero: "));
+                JOptionPane.showMessageDialog(null, a1.registroAlfa());
+                break;
+            case 2:
+                Alfa a2=new Alfa();
+                ArrayList<Alfa> listaE1=new ArrayList<>();
+                listaE1=a2.listarAlfa();
+                String resp="";
+                String r="";
+                for (Alfa alfa:listaE1){
+                    resp+=alfa.toString()+"\n";
+                }
+                r=JOptionPane.showInputDialog("Ingrese el id del numero a modificar\n"+resp);
+                if (r==null){
+                    JOptionPane.showInputDialog(null, "La modificacion se cancelo");
+                }else {
+                    a2.setNumero(JOptionPane.showInputDialog("ingresa numero"));
+                    JOptionPane.showMessageDialog(null, a2.actualizarAlfa());
+                }
+                break;
+            case 3:
+                Alfa a3=new Alfa();
+                ArrayList<Alfa> lista2=new ArrayList<>();
+                lista2=a3.listarAlfa();
+                String resp2="";
+                String r2="";
+                for (Alfa alfa:lista2){
+                    resp2+=alfa.toString()+"\n";
+                }
+                r2=JOptionPane.showInputDialog("Ingrese el id del numero a eliminar\n"+resp2);
+                if (r2==null){
+                    JOptionPane.showMessageDialog(null, "la eliminacion se a cancelado");
+                }else {
+                    a3.setId(Integer.parseInt(r2));
+                    JOptionPane.showMessageDialog(null, a3.eliminarAlfa());
+                }
+                break;
+            case 4:
+                Alfa a4=new Alfa();
+                ArrayList<Alfa> lista3=new ArrayList<>();
+                lista3=a4.listarAlfa();
+                String resp3="";
+                for (Alfa alfa:lista3){
+                    resp3+=alfa.toString()+"\n";
+                }
+                JOptionPane.showMessageDialog(null, resp3);
+                break;
         }while (op!=0);
     }
 }

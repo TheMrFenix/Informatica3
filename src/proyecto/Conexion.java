@@ -4,10 +4,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class Conexion {
     String url="jdbc:mysql://localhost:3306/";
-    String db="Fenix World Games";
+    String db="mydb";
     String user="root";
     String password="";
-    String driver="com..mysql.cj,jdbc.Driver";
+    String driver="com.mysql.cj.jdbc.Driver";
     Connection jdbc;
     public Conexion(){}
     public Connection conectar(){

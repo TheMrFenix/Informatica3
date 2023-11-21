@@ -78,7 +78,7 @@ public class Departamentos_de_trabajo {
     public String registrarDepartamentos(){
         Conexion conex=new Conexion();
         try {
-            String sql="INSERT INTO departamentos_de_trabajo (nombre, presupuesto_asignado, gastos) VALUES(?,?,?)";
+            String sql="INSERT INTO departamentosdetrabajo (nombre, presupuesto_asignado, gastos) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement=conex.conectar().prepareStatement(sql);
             preparedStatement.setString(1, this.nombre);
             preparedStatement.setDouble(2, this.presupuesto_asignado);
